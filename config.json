@@ -4,6 +4,6 @@
 	],
 	"roleName": "Aventureiro (Lvl. 100)",
 	"colors": 12,
-	"speed": 10000,
+	"speed": 600000,
 	"logging": true
 }
