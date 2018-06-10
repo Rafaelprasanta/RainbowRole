@@ -5,6 +5,7 @@ const prefix = '!!';
 
 client.on("message", msg => {
 if (msg.content.startsWith(prefix + "anunciar")) {
+	msg.delete()
 	if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send(":x: | Você não possui permissão");
 	    let args = msg.content.split(" ").slice(1);
   let sayArg = args.join(" ")
