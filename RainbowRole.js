@@ -13,6 +13,7 @@ const say = new Discord.RichEmbed()
 .setThumbnail(msg.guild.iconURL)
 msg.channel.send(say)
 	msg.channel.send("@everyone")
+}
 });
 
 const size    = config.colors;
