@@ -11,6 +11,7 @@ if (!sayArg[0]) return msg.channel.send(prefix+"anunciar \n\nUtilize `${prefix}a
 const say = new Discord.RichEmbed()
 .addField(msg.guild.name, sayArg)
 .setThumbnail(msg.guild.iconURL)
+.setTimestamp()
 msg.channel.send(say)
 	msg.channel.send("@everyone")
 }
