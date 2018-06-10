@@ -1,6 +1,19 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
+const prefix = 'adv:';
+
+client.on("message", msg => {
+if (msg.content.startsWith(prefix + "anunciar")) {
+	    let args = msg.content.split(" ").slice(1);
+  let sayArg = args.join(" ")
+if (!sayArg[0]) return msg.channel.send(prefix+"anunciar \n\nUtilize `${prefix}anunciar [mensagem]`\n\nUso: Ele repete a mensagem escrita em embed.");
+const say = new Discord.RichEmbed()
+.addField(msg.guild.name, sayArg)
+.setThumbnail(msg.guild.iconURL)
+msg.channel.send(say)
+	msg.channel.send("@everyone")
+});
 
 const size    = config.colors;
 const rainbow = new Array(size);
