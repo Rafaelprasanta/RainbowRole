@@ -5,9 +5,10 @@ const prefix = '!!';
 
 client.on("message", msg => {
 if (msg.content.startsWith(prefix + "anunciar")) {
+	if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send(":x: | Você não possui permissão");
 	    let args = msg.content.split(" ").slice(1);
   let sayArg = args.join(" ")
-if (!sayArg[0]) return msg.channel.send(prefix+"anunciar \n\nUtilize `${prefix}anunciar [mensagem]`\n\nUso: Ele repete a mensagem escrita em embed.");
+if (!sayArg[0]) return msg.channel.send(`${prefix}anunciar [mensagem]`\n\nUso: Ele repete a mensagem escrita em embed.`);
 const say = new Discord.RichEmbed()
 .addField(msg.guild.name, sayArg)
 .setThumbnail(msg.guild.iconURL)
