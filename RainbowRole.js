@@ -55,24 +55,6 @@ if (message.content.toLowerCase().startsWith(prefix + `fechar`)) {
 
 });
 
-client.on("message", msg => {
-if (msg.content.startsWith(prefix + "anunciar")) {
-	msg.delete()
-	if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send(":x: | Você não possui permissão");
-	    let args = msg.content.split(" ").slice(1);
-  let sayArg = args.join(" ")
-if (!sayArg[0]) return msg.channel.send(`» ${prefix}anunciar «\nAnuncie algo na changelog`);
-const say = new Discord.RichEmbed()
-.addField(msg.guild.name, sayArg)
-.setColor("#6be5d7")
-.setThumbnail("https://i.imgur.com/VGwzsmz.png")
-.setFooter(msg.author.username, msg.author.avatarURL)
-.setTimestamp()
-msg.channel.send(say)
-	msg.channel.send("@everyone")
-}
-});
-
 const size    = config.colors;
 const rainbow = new Array(size);
 
