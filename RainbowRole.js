@@ -3,6 +3,58 @@ const client = new Discord.Client();
 const config = require('./config.json');
 const prefix = '!!';
 
+client.on("message", (message) => {
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+if (message.content.toLowerCase().startsWith(prefix + `novo`)) {
+    const reason = message.content.split(" ").slice(1).join(" ");
+    if (!message.guild.roles.exists("name", "EQUIPE")) return message.channel.send(`Este servidor não tem uma 'EQUIPE' função feita, assim que o bilhete não será aberto.\n Se você é um administrador, faça um com esse nome exatamente e dê-o aos usuários que devem poder ver bilhetes.`);
+    if (message.guild.channels.exists("name", "ticket-" + message.author.username)) return message.channel.send(`Você já possui um ticket aberto!.`);
+    message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
+        let role = message.guild.roles.find("name", "EQUIPE");
+        let role2 = message.guild.roles.find("name", "@everyone");
+        c.overwritePermissions(role, {
+            SEND_MESSAGES: true,
+            READ_MESSAGES: true
+        });
+        c.overwritePermissions(role2, {
+            SEND_MESSAGES: false,
+            READ_MESSAGES: false
+        });
+        c.overwritePermissions(message.author, {
+            SEND_MESSAGES: true,
+            READ_MESSAGES: true
+        });
+        message.channel.send(`:white_check_mark: O ticket com criado! #${c.name}`);
+        const embed = new Discord.RichEmbed()
+        .setColor(0xCF40FA)
+        .addField(`Olá ${message.author.username}!`, `Por favor, tente explicar por que você abriu este bilhete com o máximo de detalhes possível. Nossa equipe de apoio estará aqui em breve para ajudar.`)
+        .setTimestamp();
+        c.send({ embed: embed });
+    }).catch(console.error);
+}
+if (message.content.toLowerCase().startsWith(prefix + `fechar`)) {
+    if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`Este comando só pode ser usado em tickets!`);
+
+    message.channel.send(`Você tem certeza?\nPara confirmar use  \`!!confirmar\`. Caso não haja resposta, cancelaremos o pedido de encerramento do ticket em 10 segundos..`)
+    .then((m) => {
+      message.channel.awaitMessages(response => response.content === '!!confirmar', {
+        max: 1,
+        time: 10000,
+        errors: ['time'],
+      })
+      .then((collected) => {
+          message.channel.delete();
+        })
+        .catch(() => {
+          m.edit('Encerramento de ticket cancelado, o ticket irá continuar.').then(m2 => {
+          }, 3000);
+        });
+    });
+}
+
+});
+
 client.on("message", msg => {
 if (msg.content.startsWith(prefix + "anunciar")) {
 	msg.delete()
