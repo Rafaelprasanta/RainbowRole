@@ -65,7 +65,7 @@ if (!sayArg[0]) return msg.channel.send(`» ${prefix}anunciar «\nAnuncie algo n
 const say = new Discord.RichEmbed()
 .addField(msg.guild.name, sayArg)
 .setColor("#6be5d7")
-.setThumbnail(msg.guild.iconURL)
+.setThumbnail("https://i.imgur.com/BUu0i5J.png")
 .setFooter(msg.author.username, msg.author.avatarURL)
 .setTimestamp()
 msg.channel.send(say)
