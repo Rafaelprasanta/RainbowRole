@@ -12,6 +12,7 @@ if (msg.content.startsWith(prefix + "anunciar")) {
 if (!sayArg[0]) return msg.channel.send(`» ${prefix}anunciar «\nAnuncie algo na changelog`);
 const say = new Discord.RichEmbed()
 .addField(msg.guild.name, sayArg)
+.setColor("#6be5d7")
 .setThumbnail(msg.guild.iconURL)
 .setTimestamp()
 msg.channel.send(say)
