@@ -10,7 +10,7 @@ if (message.content.toLowerCase().startsWith(prefix + `novo`)) {
     const reason = message.content.split(" ").slice(1).join(" ");
     if (!message.guild.roles.exists("name", "EQUIPE")) return message.channel.send(`Este servidor não tem uma 'EQUIPE' função feita, assim que o bilhete não será aberto.\n Se você é um administrador, faça um com esse nome exatamente e dê-o aos usuários que devem poder ver bilhetes.`);
     if (message.guild.channels.exists("name", "ticket-" + message.author.username)) return message.channel.send(`Você já possui um ticket aberto!.`);
-    message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
+    message.guild.createChannel(`ticket-${message.author}`, "text").then(c => {
         let role = message.guild.roles.find("name", "EQUIPE");
         let role2 = message.guild.roles.find("name", "@everyone");
         c.overwritePermissions(role, {
@@ -25,7 +25,7 @@ if (message.content.toLowerCase().startsWith(prefix + `novo`)) {
             SEND_MESSAGES: true,
             READ_MESSAGES: true
         });
-        message.channel.send(`:white_check_mark: O ticket com criado! #${c.name}`);
+        message.channel.send(`:white_check_mark: O ticket com criado! <#${c.id}>`);
         const embed = new Discord.RichEmbed()
         .setColor(0xCF40FA)
         .addField(`Olá ${message.author.username}!`, `Por favor, tente explicar por que você abriu este bilhete com o máximo de detalhes possível. Nossa equipe de apoio estará aqui em breve para ajudar.`)
