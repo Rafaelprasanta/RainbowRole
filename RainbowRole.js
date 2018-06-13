@@ -11,7 +11,7 @@ if (!sayArg[0]) return message.channel.send("\n\nUtilize `!!anunciar [mensagem]`
 const say = new Discord.RichEmbed()
 .setDescription(sayArg)
 .setThumbnail("https://i.imgur.com/BUu0i5J.png")
-.setFooter(`Anunciado por ${message.author.username}`, message.author.avatarURL)
+.setFooter(`Enviado por ${message.author.username}`, message.author.avatarURL)
 .setColor("#42f4e5")
 message.channel.send(say)
 		message.channel.send("@everyone")
