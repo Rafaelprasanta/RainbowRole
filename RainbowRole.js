@@ -4,6 +4,15 @@ const config = require('./config.json');
 const prefix = '!!';
 
 client.on("message", (message) => {
+	if (message.content.toLowerCase().startsWith(prefix + `anunciar`)) {
+		    let args = message.content.split(" ").slice(1);
+  let sayArg = args.join(" ")
+if (!sayArg[0]) return message.channel.send("\n\nUtilize `!!anunciar [mensagem]`\n\nUso: Ele repete a mensagem escrita em embed.");
+const say = new Discord.RichEmbed()
+.addField(messsage.guild.name, sayArg)
+.setThumbnail(message.guild.iconURL)
+message.channel.send(say)
+	}
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 if (message.content.toLowerCase().startsWith(prefix + `novo`)) {
