@@ -9,9 +9,10 @@ client.on("message", (message) => {
   let sayArg = args.join(" ")
 if (!sayArg[0]) return message.channel.send("\n\nUtilize `!!anunciar [mensagem]`\n\nUso: Ele repete a mensagem escrita em embed.");
 const say = new Discord.RichEmbed()
-.addField(messsage.guild.name, sayArg)
+.setDescription(sayArg)
 .setThumbnail(message.guild.iconURL)
 message.channel.send(say)
+		message.channel.send("@everyone")
 	}
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
