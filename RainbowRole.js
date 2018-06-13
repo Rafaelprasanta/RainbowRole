@@ -9,9 +9,10 @@ client.on("message", (message) => {
   let sayArg = args.join(" ")
 if (!sayArg[0]) return message.channel.send("\n\nUtilize `!!anunciar [mensagem]`\n\nUso: Ele repete a mensagem escrita em embed.");
 const say = new Discord.RichEmbed()
+.setTitle("AdventureNetwork")
 .setDescription(sayArg)
 .setThumbnail("https://i.imgur.com/BUu0i5J.png")
-.setFooter(`Enviado por ${message.author.username}`, message.author.avatarURL)
+.setFooter(`Enviado por ${message.author.username} | © AdventureNetwork, 2017 ~ 2018.`, message.author.avatarURL)
 .setColor("#42f4e5")
 message.channel.send(say)
 		message.channel.send("@everyone")
