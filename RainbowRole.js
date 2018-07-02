@@ -29,7 +29,7 @@ client.on("message", (message) => {
     .setThumbnail(`https://i.imgur.com/BUu0i5J.png`)
     .addField("AdventureDragon", dbc.players.online + "/" + dbc.players.max, inline="true")
     .addField("AdventureSky", sky.players.online+"/"+sky.players.max, inline="true")
-    msg.channel.send({embed})
+    message.channel.send({embed})
   });
   });
 	}
