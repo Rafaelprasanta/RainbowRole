@@ -33,6 +33,7 @@ client.on("message", (message) => {
     .addField("IP", 'dbc.adventurenetwork.com.br')
     .setColor("LIME")
     message.channel.send({embed})
+		  });
 	}
 	if (message.content.toLowerCase().startsWith(prefix + `anunciar`)) {
 		    let args = message.content.split(" ").slice(1);
