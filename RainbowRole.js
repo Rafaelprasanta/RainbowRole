@@ -23,17 +23,15 @@ client.on('guildMemberAdd', member => {
 
 client.on("message", (message) => {
 	if (message.content.toLowerCase().startWith(prefix+"servidores")) {
-		  request(`https://api.mcsrvstat.us/1/dbc.adventurenetwork.com.br`, {json : true}, (err, response, body) => {
+      request(`https://api.mcsrvstat.us/1/dbc.adventurenetwork.com.br`, {json : true}, (err, response, dbc) => {
+        request(`https://api.mcsrvstat.us/1/149.56.242.214:25586`, {json : true}, (err, response, sky) => {
     const embed = new Discord.RichEmbed()
-    .setAuthor(`Status do servidor`, `https://use.gameapis.net/mc/query/icon/dbc.adventurenetwork.com.br`)
-    .setThumbnail(`https://use.gameapis.net/mc/query/icon/dbc.adventurenetwork.com.br`)
-    .addField("Jogadores ", body.players.online + "/" + body.players.max)
-    .addField("MOTD", body.motd.raw, inline="true")
-    .addField("Versão", body.version)
-    .addField("IP", 'dbc.adventurenetwork.com.br')
-    .setColor("LIME")
-    message.channel.send({embed})
-		  });
+    .setThumbnail(`https://i.imgur.com/BUu0i5J.png`)
+    .addField("AdventureDragon", dbc.players.online + "/" + dbc.players.max, inline="true")
+    .addField("AdventureSky", sky.players.online+"/"+sky.players.max, inline="true")
+    msg.channel.send({embed})
+  });
+  });
 	}
 	if (message.content.toLowerCase().startsWith(prefix + `anunciar`)) {
 		    let args = message.content.split(" ").slice(1);
