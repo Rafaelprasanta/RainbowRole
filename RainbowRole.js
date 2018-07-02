@@ -3,6 +3,23 @@ const client = new Discord.Client();
 const config = require('./config.json');
 const prefix = '!!';
 
+client.on('guildMemberAdd', member => {
+    let avatar = member.user.avatarURL
+  
+    let embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setThumbnail(avatar)
+    .setDescription(`Bem vindo(a) ao discord da rede AdventureNetwork ${member} 
+» Evite ser banido, leia as regras no #lobby!
+
+· http://adventurenetwork.com.br/forum
+· http://adventurenetwork.com.br/`)
+    .setFooter(`${member.guild.name}`)
+    .setTimestamp()
+    client.channels.get('422057570942058530').send({embed});
+  })
+
+
 client.on("message", (message) => {
 	if (message.content.toLowerCase().startsWith(prefix + `anunciar`)) {
 		    let args = message.content.split(" ").slice(1);
