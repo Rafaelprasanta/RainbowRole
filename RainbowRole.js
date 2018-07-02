@@ -22,7 +22,7 @@ client.on('guildMemberAdd', member => {
 
 
 client.on("message", (message) => {
-	if (message.content.toLowerCase().startWith(prefix+"servidores")) {
+	if (message.content.toLowerCase().startsWith(prefix + `servidores`)) {
       request(`https://api.mcsrvstat.us/1/dbc.adventurenetwork.com.br`, {json : true}, (err, response, dbc) => {
         request(`https://api.mcsrvstat.us/1/149.56.242.214:25586`, {json : true}, (err, response, sky) => {
     const embed = new Discord.RichEmbed()
