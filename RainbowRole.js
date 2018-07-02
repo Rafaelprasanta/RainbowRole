@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
 const prefix = '!!';
-const adventuremoji = client.emojis.find("name", "adventure");
 
 client.on('guildMemberAdd', member => {
     let avatar = member.user.avatarURL
@@ -23,6 +22,18 @@ client.on('guildMemberAdd', member => {
 
 
 client.on("message", (message) => {
+	if (message.content.toLowerCase().startWith(prefix+"servidores")) {
+		  request(`https://api.mcsrvstat.us/1/dbc.adventurenetwork.com.br`, {json : true}, (err, response, body) => {
+    const embed = new Discord.RichEmbed()
+    .setAuthor(`Status do servidor`, `https://use.gameapis.net/mc/query/icon/dbc.adventurenetwork.com.br`)
+    .setThumbnail(`https://use.gameapis.net/mc/query/icon/dbc.adventurenetwork.com.br`)
+    .addField("Jogadores ", body.players.online + "/" + body.players.max)
+    .addField("MOTD", body.motd.raw, inline="true")
+    .addField("Versão", body.version)
+    .addField("IP", 'dbc.adventurenetwork.com.br')
+    .setColor("LIME")
+    message.channel.send({embed})
+	}
 	if (message.content.toLowerCase().startsWith(prefix + `anunciar`)) {
 		    let args = message.content.split(" ").slice(1);
   let sayArg = args.join(" ")
