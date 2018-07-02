@@ -10,7 +10,7 @@ client.on('guildMemberAdd', member => {
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setThumbnail(avatar)
-    .addField(`${adventuremoji}`, member)
+    .addField(`:hotsprings: Veja o status dos servidores » !!servidores`, member)
     .setDescription(`Bem vindo(a) ao discord da rede AdventureNetwork; 
 » Evite ser banido, leia as regras no <#361338362663010306>!
 
