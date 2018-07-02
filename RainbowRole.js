@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
+var request = require('request');
 const prefix = '!!';
 
 client.on('guildMemberAdd', member => {
