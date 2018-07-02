@@ -9,8 +9,8 @@ client.on('guildMemberAdd', member => {
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setThumbnail(avatar)
-    .setDescription(`Bem vindo(a) ao discord da rede AdventureNetwork ${member} 
-» Evite ser banido, leia as regras no #lobby!
+    .setDescription(`Bem vindo(a) ao discord da rede AdventureNetwork ${member.username}#${member.descriminator} 
+» Evite ser banido, leia as regras no <#361338362663010306>!
 
 · http://adventurenetwork.com.br/forum
 · http://adventurenetwork.com.br/`)
