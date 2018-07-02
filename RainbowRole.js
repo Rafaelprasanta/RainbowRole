@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
 const prefix = '!!';
+const adventuremoji = client.emojis.find("name", "adventure");
 
 client.on('guildMemberAdd', member => {
     let avatar = member.user.avatarURL
@@ -9,7 +10,8 @@ client.on('guildMemberAdd', member => {
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setThumbnail(avatar)
-    .setDescription(`Bem vindo(a) ao discord da rede AdventureNetwork ${member.username}#${member.descriminator} 
+    .addField(`${adventuremoji}`, member)
+    .setDescription(`Bem vindo(a) ao discord da rede AdventureNetwork; 
 » Evite ser banido, leia as regras no <#361338362663010306>!
 
 · http://adventurenetwork.com.br/forum
