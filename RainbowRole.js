@@ -14,7 +14,7 @@ client.on('guildMemberAdd', member => {
     .setDescription(`Bem vindo(a) ao discord da rede AdventureNetwork; 
 » Evite ser banido, leia as regras no <#361338362663010306>!
 
-· http://adventurenetwork.com.br/forum
+· http://adventurenetwork.com.br/forum/
 · http://adventurenetwork.com.br/`)
     .setFooter(`${member.guild.name}`)
     .setTimestamp()
